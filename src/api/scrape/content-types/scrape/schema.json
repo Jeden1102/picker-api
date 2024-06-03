@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scrapes",
+  "info": {
+    "singularName": "scrape",
+    "pluralName": "scrapes",
+    "displayName": "Scrape"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
