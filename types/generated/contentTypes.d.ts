@@ -788,6 +788,80 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCookieCookie extends Schema.CollectionType {
+  collectionName: 'cookies';
+  info: {
+    singularName: 'cookie';
+    pluralName: 'cookies';
+    displayName: 'Cookie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cookie.cookie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cookie.cookie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrivacyPrivacy extends Schema.CollectionType {
+  collectionName: 'privacies';
+  info: {
+    singularName: 'privacy';
+    pluralName: 'privacies';
+    displayName: 'Privacy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::privacy.privacy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::privacy.privacy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiScrapeScrape extends Schema.CollectionType {
   collectionName: 'scrapes';
   info: {
@@ -865,6 +939,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::cookie.cookie': ApiCookieCookie;
+      'api::privacy.privacy': ApiPrivacyPrivacy;
       'api::scrape.scrape': ApiScrapeScrape;
       'api::term.term': ApiTermTerm;
     }
